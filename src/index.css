@@ -1,0 +1,119 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  font-family: 'Inter', sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  margin: 0;
+  min-height: 100%;
+  background: #0a0a0a;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+.hero-bg {
+  position: absolute;
+  inset: -10% -20% auto;
+  height: 70vh;
+  pointer-events: none;
+  background:
+    radial-gradient(circle at 15% 20%, rgba(0, 163, 255, 0.25), transparent 30%),
+    radial-gradient(circle at 85% 10%, rgba(255, 255, 255, 0.08), transparent 24%);
+  transform: translate3d(0, var(--hero-offset, 0px), 0);
+}
+
+.panel {
+  border: 1px solid rgba(36, 40, 48, 0.9);
+  background: linear-gradient(180deg, rgba(17, 18, 20, 0.75), rgba(14, 15, 17, 0.9));
+  border-radius: 1rem;
+  padding: 1.4rem;
+}
+
+.service-card {
+  border: 1px solid rgba(36, 40, 48, 0.9);
+  border-radius: 1rem;
+  padding: 1.5rem;
+  background: linear-gradient(180deg, rgba(17, 18, 20, 0.75), rgba(10, 10, 10, 0.95));
+  transition: transform 220ms ease, border-color 220ms ease, box-shadow 220ms ease;
+}
+
+.service-card:hover {
+  transform: translateY(-3px);
+  border-color: rgba(0, 163, 255, 0.5);
+  box-shadow: 0 14px 50px rgba(0, 0, 0, 0.38);
+}
+
+.case-snippet {
+  opacity: 0;
+  transform: translateY(6px);
+  transition: opacity 220ms ease, transform 220ms ease;
+}
+
+.service-card:hover .case-snippet,
+.service-card:focus-within .case-snippet {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.ticker-wrap {
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.ticker-track {
+  display: inline-flex;
+  align-items: center;
+  gap: 2.5rem;
+  min-width: 100%;
+  animation: marquee 18s linear infinite;
+}
+
+.ticker-item {
+  color: #999ca3;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+}
+
+.glass-panel {
+  border-radius: 1rem;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  background: linear-gradient(145deg, rgba(30, 32, 36, 0.72), rgba(14, 15, 16, 0.88));
+  backdrop-filter: blur(12px);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.45);
+}
+
+@keyframes marquee {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .ticker-track {
+    animation: none;
+  }
+
+  .service-card,
+  .case-snippet {
+    transition: none;
+  }
+}
